@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useMemo } from 'react'
 import ProductForm from './Components/ProductForm'
 import ProductList from './Components/ProductList'
@@ -8,6 +8,10 @@ const App = () => {
   const [productos, setProductos] = useState([])
   const [search, setSearch] = useState('')
   const [editing, setEditing] = useState(null)
+  //uso de useEffect para mostrar por consola los cambios de la array del productos
+  useEffect (()=> {
+    console.log("Productos Actualizados : " , productos);
+  }, [productos]);
 
   const agregarProducto = (producto) => {
     const nuevoProducto = {
