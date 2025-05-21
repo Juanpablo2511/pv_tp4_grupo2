@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useMemo } from 'react'
 import ProductForm from './Components/ProductForm'
 import ProductList from './Components/ProductList'
 import SearchBar from './Components/SearchBar'
@@ -30,11 +31,15 @@ const App = () => {
   const eliminarProducto = (id) => {
     setProductos(productos.filter(p => p.id !== id))
   }
-
-  const productosFiltrados = productos.filter(p =>
-    p.descripcion.toLowerCase().includes(search.toLowerCase()) ||
-    p.id.includes(search)
-  )
+//Uso de hooks useMemo
+  const productosFiltrados = useMemo(() =>{
+    const termino = search.toLowerCase();
+    return productos.filter(p =>
+      p.descripcion.toLowerCase().includes(termino) ||
+      p.id.toLowerCase().includes(termino)
+    )
+  
+  }, [productos ,search]);
 
   return (
     <div className="p-4">
