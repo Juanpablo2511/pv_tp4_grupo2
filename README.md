@@ -1,12 +1,17 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Integrantes del Grupo 2 Nombre: Arias Yesica de los Angeles *nombre de usuario de github: AriasJesica27
 
-Currently, two official plugins are available:
+Nombre: Farfán Juan Pablo *nombre de usuario de github: Juanpablo2511
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Nombre: Fernandez Nadia Evangelina *nombre de usuario de github: NadiaE-Fernandez
 
-## Expanding the ESLint configuration
+Nombre: Quispe Matías *nombre de github:Matifq14
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+El proyecto Gestión de Productos es una aplicación web desarrollada en React que permite gestionar una lista de productos utilizando hooks. La aplicación ofrece funcionalidades para agregar, eliminar y filtrar productos. React permite crear componentes reutilizables como ProductoForm, ProductList, ProductItem,SearchBar.
+
+En este proyecto, se utilizaron los siguientes hooks:
+
+useState: para gestionar el estado del producto y el filtro de búsqueda.
+useMemo: para memorizar la lista filtrada de productos y evitar cálculos innecesarios.
+useCallback: para definir las funciones  y evitar recrearlas en cada renderizado así mejora el rendimiento
