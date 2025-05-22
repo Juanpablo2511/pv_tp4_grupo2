@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback} from 'react'
 import { useMemo } from 'react'
 import ProductForm from './Components/ProductForm'
 import ProductList from './Components/ProductList'
@@ -13,28 +13,27 @@ const App = () => {
     console.log("Productos Actualizados : " , productos);
   }, [productos]);
 
-  const agregarProducto = (producto) => {
+  const agregarProducto = useCallback((producto) => {
     const nuevoProducto = {
       ...producto,
       id: crypto.randomUUID(),
       precioConDescuento: producto.precioUnitario * (1 - producto.descuento / 100),
     }
-    setProductos([...productos, nuevoProducto])
-  }
+    setProductos(prev => [...prev, nuevoProducto])
+  }, [])
 
-  const actualizarProducto = (productoActualizado) => {
-    setProductos(productos.map(p =>
+  const actualizarProducto = useCallback((productoActualizado) => {
+    setProductos(prev => prev.map(p =>
       p.id === productoActualizado.id
         ? { ...productoActualizado, precioConDescuento: productoActualizado.precioUnitario * (1 - productoActualizado.descuento / 100) }
         : p
     ))
     setEditing(null)
-  }
+  }, [])
 
- 
-  const eliminarProducto = (id) => {
-    setProductos(productos.filter(p => p.id !== id))
-  }
+  const eliminarProducto = useCallback((id) => {
+    setProductos(prev => prev.filter(p => p.id !== id))
+  }, [])
 //Uso de hooks useMemo
   const productosFiltrados = useMemo(() =>{
     const termino = search.toLowerCase();
